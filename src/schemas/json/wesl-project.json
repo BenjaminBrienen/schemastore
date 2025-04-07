@@ -1,0 +1,181 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"definitions": {
+		"package": {
+			"type": "object",
+			"properties": {
+				"display_name": {
+					"description": "Package name used for display purposes, without affecting semantics.",
+					"title": "Display name",
+					"type": "string"
+				},
+				"root_module": {
+					"description": "Path to the root module of the package.",
+					"title": "Root module",
+					"type": "string"
+				},
+				"edition": {
+					"description": "WESL Edition of the package.",
+					"title": "Edition",
+					"type": "string",
+					"enum": [
+						"WGSL",
+						"WESL"
+					]
+				},
+				"dependencies": {
+					"description": "Package dependencies.",
+					"title": "Dependencies",
+					"type": "array",
+					"uniqueItems": true,
+					"items": {
+						"$ref": "#/definitions/dependency"
+					}
+				},
+				"version": {
+					"description": "The package's version",
+					"title": "Version",
+					"type": "string",
+					"pattern": "^([0-9]+)\\.([0-9]+)\\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?(?:\\+[0-9A-Za-z-]+)?$"
+				},
+				"is_workspace_member": {
+					"description": "Whether this package should be treated as a member of the current \"workspace\".",
+					"title": "Is workspace member?",
+					"type": "boolean"
+				},
+				"source": {
+					"description": "(Super)set of `.wesl` files comprising this package.",
+					"title": "Source",
+					"type": "object",
+					"properties": {
+						"include_directories": {
+							"title": "Directories that are the package source code",
+							"type": "array",
+							"uniqueItems": true,
+							"items": {
+								"type": "string"
+							}
+						},
+						"exclude_directories": {
+							"title": "Directories that are not a part of the package source code",
+							"type": "array",
+							"uniqueItems": true,
+							"items": {
+								"type": "string"
+							}
+						}
+					},
+					"required": [
+						"include_directories",
+						"exclude_directories"
+					]
+				},
+				"configurations": {
+					"description": "The set of configurations activated for a given package.",
+					"title": "Configurations",
+					"type": "array",
+					"uniqueItems": true,
+					"items": {
+						"type": "string"
+					}
+				},
+				"target": {
+					"description": "Target triple for this package.",
+					"title": "Target",
+					"type": "string"
+				},
+				"repository": {
+					"description": "URL to the source repository of the package.",
+					"title": "Repository",
+					"type": "string"
+				},
+				"license": {
+					"description": "The license under which the package is distributed (for example: MIT, Apache-2.0, and/or GPL-3.0).",
+					"title": "License",
+					"type": "string"
+				},
+				"categories": {
+					"description": "High-level categories for classifying the package.",
+					"title": "Categories",
+					"type": "array",
+					"uniqueItems": true,
+					"items": {
+						"type": "string"
+					}
+				},
+				"keywords": {
+					"description": "Searchable keywords describing the package.",
+					"title": "Keywords",
+					"type": "array",
+					"uniqueItems": true,
+					"items": {
+						"type": "string"
+					}
+				},
+				"homepage": {
+					"description": "URL to the package's homepage.",
+					"title": "Homepage",
+					"type": "string",
+					"format": "uri"
+				},
+				"publisher": {
+					"description": "Publisher name or organization.",
+					"title": "Publisher",
+					"type": "string"
+				},
+				"description": {
+					"description": "A short description of the package.",
+					"title": "Description",
+					"type": "string"
+				},
+				"icon": {
+					"description": "URL or path to the package's icon.",
+					"title": "Icon",
+					"type": "string"
+				}
+			},
+			"required": [
+				"root_module",
+				"edition",
+				"dependencies"
+			]
+		},
+		"dependency": {
+			"title": "Dependency",
+			"type": "object",
+			"properties": {
+				"package": {
+					"description": "Index of a package in the `packages` array.",
+					"title": "Package index",
+					"type": "integer"
+				},
+				"name": {
+					"description": "Name as should appear in code.",
+					"title": "Name",
+					"type": "string"
+				}
+			},
+			"required": [
+				"package",
+				"name"
+			]
+		}
+	},
+	"id": "https://json.schemastore.org/wesl-project.json",
+	"properties": {
+		"packages": {
+			"description": "The set of packages comprising the current project.",
+			"title": "Packages",
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"$ref": "#/definitions/package"
+			}
+		}
+	},
+	"required": [
+		"packages"
+	],
+	"title": "JSON schema WESL projects",
+	"type": "object"
+}
