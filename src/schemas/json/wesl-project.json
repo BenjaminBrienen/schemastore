@@ -44,7 +44,7 @@
 					"type": "boolean"
 				},
 				"source": {
-					"description": "(Super)set of `.wesl` files comprising this package.",
+					"description": "(Super)set of `.wesl` and `.wgsl` files comprising this package.",
 					"title": "Source",
 					"type": "object",
 					"properties": {
@@ -69,69 +69,6 @@
 						"include_directories",
 						"exclude_directories"
 					]
-				},
-				"configurations": {
-					"description": "The set of configurations activated for a given package.",
-					"title": "Configurations",
-					"type": "array",
-					"uniqueItems": true,
-					"items": {
-						"type": "string"
-					}
-				},
-				"target": {
-					"description": "Target platform for this package.",
-					"title": "Target",
-					"type": "string"
-				},
-				"repository": {
-					"description": "URL to the source repository of the package.",
-					"title": "Repository",
-					"type": "string"
-				},
-				"license": {
-					"description": "The license under which the package is distributed (for example: MIT, Apache-2.0, and/or GPL-3.0).",
-					"title": "License",
-					"type": "string"
-				},
-				"categories": {
-					"description": "High-level categories for classifying the package.",
-					"title": "Categories",
-					"type": "array",
-					"uniqueItems": true,
-					"items": {
-						"type": "string"
-					}
-				},
-				"keywords": {
-					"description": "Searchable keywords describing the package.",
-					"title": "Keywords",
-					"type": "array",
-					"uniqueItems": true,
-					"items": {
-						"type": "string"
-					}
-				},
-				"homepage": {
-					"description": "URL to the package's homepage.",
-					"title": "Homepage",
-					"type": "string",
-					"format": "uri"
-				},
-				"publisher": {
-					"description": "Publisher name or organization.",
-					"title": "Publisher",
-					"type": "string"
-				},
-				"description": {
-					"description": "A short description of the package.",
-					"title": "Description",
-					"type": "string"
-				},
-				"icon": {
-					"description": "URL or path to the package's icon.",
-					"title": "Icon",
-					"type": "string"
 				}
 			},
 			"required": [
