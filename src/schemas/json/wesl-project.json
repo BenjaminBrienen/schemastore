@@ -69,6 +69,11 @@
 						"include_directories",
 						"exclude_directories"
 					]
+				},
+				"repository": {
+					"description": "URL to the source repository of the package.",
+					"title": "Repository",
+					"type": "string"
 				}
 			},
 			"required": [
