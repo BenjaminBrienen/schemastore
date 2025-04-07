@@ -80,7 +80,7 @@
 					}
 				},
 				"target": {
-					"description": "Target triple for this package.",
+					"description": "Target platform for this package.",
 					"title": "Target",
 					"type": "string"
 				},
